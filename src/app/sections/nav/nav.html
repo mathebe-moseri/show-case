@@ -1,0 +1,137 @@
+<nav class="fixed top-0 inset-x-0 z-[1000] flex items-center justify-between transition-all duration-[350ms] border-b"
+  [ngClass]="isDark()
+    ? scrolled()
+      ? 'h-16 px-4 md:px-[60px] bg-[rgba(8,8,8,0.88)] border-white/[0.07] backdrop-blur-[20px]'
+      : 'h-16 px-4 md:px-[60px] border-transparent'
+    : 'h-16 px-4 md:px-[60px] bg-[rgba(250,249,245,0.96)] border-black/[0.08] backdrop-blur-[16px]'">
+
+  <!-- logo -->
+  <a href="#" class="flex items-center gap-[11px] no-underline shrink-0 group">
+
+    <!-- logo title -->
+    <div class="relative w-[42px] h-[42px] shrink-0">
+      <!-- bg + inner dot-grid via nav.css -->
+      <div class="logo-tile-bg" [class.dark-tile]="isDark()" [class.light-tile]="!isDark()"></div>
+
+      <!-- tl bracket -->
+      <div class="absolute top-[-1px] left-[-1px] w-[10px] h-[10px] border-t-2 border-l-2 border-[#c8f03d]"></div>
+      <!-- br bracket -->
+      <div class="absolute bottom-[-1px] right-[-1px] w-[10px] h-[10px] border-b-2 border-r-2 border-[#c8f03d]"></div>
+      <!-- tr dot -->
+      <div
+        class="absolute top-[-2px] right-[-2px] w-1 h-1 rounded-full bg-[#c8f03d] shadow-[0_0_6px_rgba(200,240,61,0.5)]">
+      </div>
+      <!-- bl dot -->
+      <div
+        class="absolute bottom-[-2px] left-[-2px] w-1 h-1 rounded-full bg-[#c8f03d] shadow-[0_0_6px_rgba(200,240,61,0.5)]">
+      </div>
+
+      <svg class="absolute inset-0 w-full h-full" viewBox="0 0 110 110" fill="none">
+        <polyline points="18,82 18,30 40,62 62,30 62,82" [attr.stroke]="isDark() ? '#f0f0ee' : '#111111'"
+          stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M 88,30 A 26,26 0 1,0 88,80" [attr.stroke]="isDark() ? '#f0f0ee' : '#111111'" stroke-width="7"
+          stroke-linecap="round" fill="none" />
+      </svg>
+
+      <!-- accent underline -->
+      <div
+        class="absolute bottom-[6px] left-[6px] right-[6px] h-[1.5px] rounded-sm bg-gradient-to-r from-[#c8f03d] to-[#9dd42a] shadow-[0_0_6px_rgba(200,240,61,0.5)]">
+      </div>
+    </div>
+
+    <!-- wordmark -->
+    <div class="flex flex-col gap-[3px]">
+      <span
+        class="font-['Bebas_Neue',Impact,sans-serif] text-[22px] tracking-[2.5px] leading-none transition-colors duration-[400ms]"
+        [ngClass]="isDark() ? 'text-[#f0f0ee]' : 'text-[#0d0d0d]'">MOSERI</span>
+
+      <span class="logo-sub text-[7.5px] tracking-[2.2px] uppercase whitespace-nowrap font-['DM_Mono',monospace]"
+        [ngClass]="isDark() ? 'text-[#9dd42a]' : 'text-[#4a7a00]'">
+        <span class="role role-1">Software Engineer</span>
+        <span class="dot-separator"> · </span>
+        <span class="role role-2">Full Stack</span>
+      </span>
+    </div>
+  </a>
+
+  <!-- right side -->
+  <div class="flex items-center gap-2 ml-auto">
+
+    <!-- desktop nav buttons — hidden below 600 px -->
+    <div class="hidden sm:flex items-center gap-[2px]">
+      <button *ngFor="let s of sections"
+        class="nav-btn font-['DM_Mono',monospace] text-[10px] tracking-[0.12em] uppercase rounded-md px-[13px] py-[7px] border-none cursor-pointer transition-all duration-[200ms]"
+        [ngClass]="activeSection() === s
+          ? 'bg-[#c8f03d] text-[#0a0a0a] shadow-[0_2px_12px_rgba(200,240,61,0.4)]'
+          : isDark()
+            ? 'bg-transparent text-[#aaa]'
+            : 'bg-transparent text-[#2a2a2a]'" (click)="activeSection.set(s)">{{ s | titlecase }}</button>
+    </div>
+
+    <!-- subtle divider -->
+    <div class="hidden sm:block w-px h-5 mx-2 rounded-full"
+      [ngClass]="isDark() ? 'bg-white/[0.10]' : 'bg-black/[0.10]'"></div>
+
+    <!-- theme toggle -->
+    <div class="cursor-pointer select-none shrink-0" (click)="toggleTheme()">
+      <div class="relative flex items-center rounded-full border transition-all duration-300"
+        style="width:58px; height:26px; padding: 0 3px;" [ngClass]="isDark()
+          ? 'bg-white/[0.06] border-white/[0.14]'
+          : 'bg-black/[0.05] border-black/[0.14]'">
+        <!-- sliding thumb -->
+        <div
+          class="absolute top-[2px] w-[20px] h-[20px] rounded-full bg-[#c8f03d] shadow-[0_0_10px_rgba(200,240,61,0.45)] transition-[left] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] pointer-events-none"
+          [style.left]="isDark() ? '3px' : '35px'"></div>
+
+        <!-- D label -->
+        <span
+          class="relative z-10 w-[20px] h-[20px] flex items-center justify-center font-['DM_Mono',monospace] text-[8px] font-medium tracking-[0.05em] uppercase leading-none pointer-events-none select-none transition-colors duration-300"
+          [ngClass]="isDark() ? 'text-[#0d0d0d] font-bold' : 'text-[#aaa]'">D</span>
+
+        <div class="flex-1"></div>
+
+        <!-- L label -->
+        <span
+          class="relative z-10 w-[20px] h-[20px] flex items-center justify-center font-['DM_Mono',monospace] text-[8px] font-medium tracking-[0.05em] uppercase leading-none pointer-events-none select-none transition-colors duration-300"
+          [ngClass]="isDark() ? 'text-[#555]' : 'text-[#0d0d0d] font-bold'">L</span>
+      </div>
+    </div>
+
+    <!-- hamburger — visible below 600 px -->
+    <button
+      class="flex sm:hidden flex-col items-center justify-center gap-[5px] w-9 h-9 rounded-lg border cursor-pointer p-0 bg-transparent transition-all duration-200 hover:border-[#c8f03d]"
+      [ngClass]="isDark() ? 'border-white/[0.10]' : 'border-black/[0.14]'" (click)="toggleMenu()"
+      aria-label="Toggle menu">
+      <span class="block w-4 h-[1.5px] rounded-sm transition-transform duration-300 origin-center"
+        [ngClass]="menuOpen() ? 'translate-y-[6.5px] rotate-45 bg-[#c8f03d]' : isDark() ? 'bg-[#999]' : 'bg-[#2a2a2a]'"></span>
+      <span class="block w-4 h-[1.5px] rounded-sm transition-all duration-300"
+        [ngClass]="menuOpen() ? 'opacity-0 scale-x-0 bg-[#c8f03d]' : isDark() ? 'bg-[#999]' : 'bg-[#2a2a2a]'"></span>
+      <span class="block w-4 h-[1.5px] rounded-sm transition-transform duration-300 origin-center"
+        [ngClass]="menuOpen() ? '-translate-y-[6.5px] -rotate-45 bg-[#c8f03d]' : isDark() ? 'bg-[#999]' : 'bg-[#2a2a2a]'"></span>
+    </button>
+
+  </div>
+</nav>
+
+<!-- mobile drawer -->
+<div
+  class="fixed inset-x-0 z-[999] border-b overflow-hidden transition-[max-height,opacity] duration-[380ms] ease-[cubic-bezier(0.4,0,0.2,1)] sm:hidden"
+  style="top:56px;" [ngClass]="[
+    isDark()
+      ? 'bg-[rgba(8,8,8,0.97)] border-white/[0.07] backdrop-blur-[24px]'
+      : 'bg-[rgba(250,249,245,0.99)] border-black/[0.08] backdrop-blur-[24px]',
+    menuOpen() ? 'max-h-[320px] opacity-100' : 'max-h-0 opacity-0'
+  ]">
+  <div class="flex flex-col gap-[2px] px-4 pt-[10px] pb-4">
+    <button *ngFor="let s of sections"
+      class="font-['DM_Mono',monospace] text-[10.5px] tracking-[0.14em] uppercase border-none bg-transparent px-[14px] py-[12px] cursor-pointer text-left rounded-lg w-full transition-all duration-200"
+      [ngClass]="activeSection() === s
+        ? isDark()
+          ? 'bg-[rgba(200,240,61,0.10)] text-[#c8f03d] shadow-[inset_2px_0_0_#c8f03d]'
+          : 'bg-[rgba(90,138,0,0.07)] text-[#3a6200] shadow-[inset_2px_0_0_#5a8a00]'
+        : isDark()
+          ? 'text-[#777] hover:bg-[rgba(200,240,61,0.05)] hover:text-[#ddd]'
+          : 'text-[#444] hover:bg-black/[0.04] hover:text-[#0d0d0d]'" (click)="setSection(s)">{{ s | titlecase
+      }}</button>
+  </div>
+</div>

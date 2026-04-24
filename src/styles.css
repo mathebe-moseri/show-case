@@ -1,4 +1,86 @@
-/* You can add global styles to this file, and also import other style files */
+/* Tailwind v3 */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap');
+
+/* directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* global design tokens */
+:root {
+  --accent: #c8f03d;
+  --accent-glow: rgba(200, 240, 61, 0.35);
+  --nav-h: 64px;
+
+  /* dark (default) */
+  --bg: #0a0a0a;
+  --grid-color: rgba(255, 255, 255, 0.055);
+  --stroke: #f0f0ee;
+  --sub-color: #3a3a3a;
+}
+
+/* light overrides */
+body.light {
+  --bg: #f0f0ea;
+  --grid-color: rgba(0, 0, 0, 0.07);
+  --stroke: #111111;
+  --sub-color: #aaaaaa;
+}
+
+/* full-page grid background */
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+  color: var(--stroke);
+  font-family: 'DM Mono', monospace;
+  transition: background-color 0.4s;
+}
+
+@media (max-width: 599px) {
+  body {
+    background-size: 22px 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  body {
+    background-size: 18px 18px;
+  }
+}
+
+/* page wrapper */
+.page-content {
+  padding-top: var(--nav-h);
+  padding-left: clamp(16px, 4vw, 60px);
+  padding-right: clamp(16px, 4vw, 60px);
+  min-height: 100vh;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --nav-h: 56px;
+  }
+}
+
+/* keyframe */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
