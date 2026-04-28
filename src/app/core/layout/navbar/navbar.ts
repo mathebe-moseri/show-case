@@ -2,22 +2,22 @@ import { Component, signal, HostListener } from '@angular/core';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-nav',
+  selector: 'app-navbar',
   standalone: true,
   imports: [CommonModule, TitleCasePipe],
-  templateUrl: './nav.html',
-  styleUrls: ['./nav.css'],
+  templateUrl: './navbar.html',
+  styleUrls: ['./navbar.css'],
 })
-export class Nav {
+export class Navbar {
   scrolled = signal(true);
-  theme = signal<'dark' | 'light'>('light');
+  theme = signal<'dark' | 'light'>('dark');
   activeSection = signal('');
   menuOpen = signal(false);
 
   readonly sections = ['about', 'projects', 'experience', 'skills', 'contact'];
 
   ngOnInit() {
-    document.body.classList.add('light');
+    document.body.classList.remove('light');
   }
 
   @HostListener('window:scroll')

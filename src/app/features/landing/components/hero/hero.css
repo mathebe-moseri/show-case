@@ -1,0 +1,154 @@
+/* fade-up reveals */
+.hero-fade-1,
+.hero-fade-2,
+.hero-fade-3,
+.hero-fade-4,
+.hero-fade-5,
+.hero-fade-6 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-fade-1 {
+  animation-delay: 0.05s;
+}
+
+.hero-fade-2 {
+  animation-delay: 0.15s;
+}
+
+.hero-fade-3 {
+  animation-delay: 0.28s;
+}
+
+.hero-fade-4 {
+  animation-delay: 0.38s;
+}
+
+.hero-fade-5 {
+  animation-delay: 0.50s;
+}
+
+.hero-fade-6 {
+  animation-delay: 0.62s;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  animation: cursorBlink 0.9s ease-in-out infinite;
+}
+
+@keyframes cursorBlink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* avatar rings  */
+.hero-ring {
+  animation: ringPulse 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero-ring-2 {
+  animation-delay: 0.8s;
+}
+
+.hero-ring-3 {
+  animation-delay: 1.6s;
+}
+
+@keyframes ringPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* avatar canvas */
+.avatar-canvas {
+  width: 320px;
+  height: 320px;
+  animation: floatAvatar 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes floatAvatar {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* scanline texture */
+.hero-scanlines {
+  background-image: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 3px,
+      rgba(255, 255, 255, 0.012) 3px,
+      rgba(255, 255, 255, 0.012) 4px);
+}
+
+/* scroll bounce */
+.scroll-bounce {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+
+/* responsive canvas */
+@media (max-width: 1023px) {
+  .avatar-canvas {
+    width: 260px !important;
+    height: 260px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .avatar-canvas {
+    width: 210px !important;
+    height: 210px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .avatar-canvas {
+    width: 170px !important;
+    height: 170px !important;
+  }
+}
