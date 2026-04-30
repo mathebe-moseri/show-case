@@ -14,7 +14,7 @@ export class Navbar {
   activeSection = signal('');
   menuOpen = signal(false);
 
-  readonly sections = ['about', 'projects', 'experience', 'skills', 'contact'];
+  readonly sections = ['about', 'experience', 'projects', 'skills', 'contact'];
 
   ngOnInit() {
     document.body.classList.remove('light');
@@ -42,4 +42,59 @@ export class Navbar {
     this.activeSection.set(section);
     this.menuOpen.set(false);
   }
+
+  scrollToHero() {
+    const hero = document.querySelector('app-hero');
+
+    if (hero) {
+      hero.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }
+
+scrollToSection(section: string) {
+  console.log('Clicked section:', section);
+
+  this.activeSection.set(section);
+  this.menuOpen.set(false);
+
+  const element = document.getElementById(section);
+
+  if (element) {
+    const navbarHeight = 80;
+
+    const elementPosition =
+      element.getBoundingClientRect().top + window.scrollY;
+
+    const offsetPosition = elementPosition - navbarHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+
+    // 🔥 ADD THIS PART (animation trigger)
+    let target: HTMLElement | null = null;
+
+    if (section === 'about') {
+  target = element.querySelector('.zoom-wrapper') as HTMLElement;
+    }
+
+    if (section === 'experience') {
+target = document.querySelectorAll('.zoom-wrapper')[1] as HTMLElement;
+    }
+
+    if (target) {
+      target.classList.remove('zoom-focus');
+
+      // restart animation
+      void target.offsetWidth;
+
+      target.classList.add('zoom-focus');
+    }
+  }
+}
+
 }

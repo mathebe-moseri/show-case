@@ -55,17 +55,24 @@ export class Hero implements AfterViewInit, OnDestroy {
   private blinkStart = 0;
   private nextBlinkTime = Date.now() + 1500;
 
+  private isVisible = false;
+  private observer!: IntersectionObserver;
+  private typewriterStarted = false;
+
   ngAfterViewInit() {
-    this.startTypewriter();
+    this.setupVisibilityObserver();
+
     this.resolveCanvasSize();
     this.initThree();
     this.initCursorTracking();
+
     window.addEventListener('resize', this.onResize);
   }
 
   ngOnDestroy() {
     clearTimeout(this.typeTimer);
     cancelAnimationFrame(this.frameId);
+    this.observer?.disconnect(); // 👈 ADD THIS
     window.removeEventListener('resize', this.onResize);
     this.renderer?.dispose();
   }
@@ -123,7 +130,10 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   private startTypewriter() {
     const type = () => {
+      if (!this.isVisible) return; // pause when hidden
+
       const target = this.roles[this.roleIndex];
+
       if (!this.deleting) {
         this.currentRole = target.slice(0, ++this.charIndex);
         if (this.charIndex === target.length) {
@@ -340,5 +350,26 @@ export class Hero implements AfterViewInit, OnDestroy {
     }
 
     this.renderer.render(this.scene, this.camera);
+  }
+
+  private setupVisibilityObserver() {
+    const el = this.heroRef.nativeElement;
+
+    this.observer = new IntersectionObserver(
+      ([entry]) => {
+        this.isVisible = entry.isIntersecting;
+
+        if (this.isVisible) {
+          this.startTypewriter();
+          this.animate();
+        } else {
+          clearTimeout(this.typeTimer);
+          cancelAnimationFrame(this.frameId);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    this.observer.observe(el);
   }
 }

@@ -6,7 +6,7 @@
     : 'h-16 px-4 md:px-[60px] bg-[rgba(250,249,245,0.96)] border-black/[0.08] backdrop-blur-[16px]'">
 
   <!-- logo -->
-  <a href="#" class="flex items-center gap-[11px] no-underline shrink-0 group">
+  <a (click)="scrollToHero()" class="flex items-center gap-[11px] no-underline shrink-0 group cursor-pointer">
 
     <!-- logo title -->
     <div class="relative w-[42px] h-[42px] shrink-0">
@@ -65,7 +65,7 @@
           ? 'bg-[#c8f03d] text-[#0a0a0a] shadow-[0_2px_12px_rgba(200,240,61,0.4)]'
           : isDark()
             ? 'bg-transparent text-[#aaa]'
-            : 'bg-transparent text-[#2a2a2a]'" (click)="activeSection.set(s)">{{ s | titlecase }}</button>
+            : 'bg-transparent text-[#2a2a2a]'" (click)="scrollToSection(s)">{{ s | titlecase }}</button>
     </div>
 
     <!-- subtle divider -->
@@ -131,7 +131,7 @@
           : 'bg-[rgba(90,138,0,0.07)] text-[#3a6200] shadow-[inset_2px_0_0_#5a8a00]'
         : isDark()
           ? 'text-[#777] hover:bg-[rgba(200,240,61,0.05)] hover:text-[#ddd]'
-          : 'text-[#444] hover:bg-black/[0.04] hover:text-[#0d0d0d]'" (click)="setSection(s)">{{ s | titlecase
+          : 'text-[#444] hover:bg-black/[0.04] hover:text-[#0d0d0d]'" (click)="scrollToSection(s)">{{ s | titlecase
       }}</button>
   </div>
 </div>

@@ -1,16 +1,21 @@
-import { Component, signal } from '@angular/core';
+import {
+  Component,
+  signal
+} from '@angular/core';
 import { Navbar } from "../../core/layout/navbar/navbar";
 import { Hero } from "./components/hero/hero";
+import { About } from './components/about/about';
 
 @Component({
   selector: 'app-landing',
-  imports: [Navbar, Hero],
+  imports: [Navbar, Hero, About],
   templateUrl: './landing.html',
   styleUrl: './landing.css',
 })
 export class Landing {
   protected readonly title = signal('showcase');
 
+  theme = signal<'dark' | 'light'>('light');
   isDark = () => this.theme() === 'dark';
-  theme  = signal<'dark'|'light'>('light');
+
 }
