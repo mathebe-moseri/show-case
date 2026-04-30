@@ -1,7 +1,5 @@
 /* Tailwind v3 */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,6 +15,11 @@
   --grid-color: rgba(255, 255, 255, 0.038);
   --stroke: #ebebea;
   --sub-color: #3a3a3a;
+
+    --mono: 'Space Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --display: 'Bebas Neue', sans-serif;
+  --dm-mono: 'DM Mono', monospace;
 }
 
 body.light {
@@ -37,8 +40,8 @@ body {
   background-size: 32px 32px;
   background-attachment: fixed;
   color: var(--stroke);
-  font-family: 'DM Mono', monospace;
   transition: background-color 0.4s, color 0.4s;
+  font-family: var(--sans);
 }
 
 @media (max-width: 599px) { body { background-size: 22px 22px; } }

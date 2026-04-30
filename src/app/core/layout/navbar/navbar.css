@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap');
+
+/* NAV ROOT */
+nav {
+  font-family: var(--sans);
+}
 
 /* logo title */
 .logo-tile-bg {
@@ -8,6 +12,25 @@
   transition: background 0.4s, box-shadow 0.4s;
 }
 
+/* LOGO NAME (main identity) */
+.logo-name {
+  font-family: var(--display);
+  letter-spacing: 0.04em;
+}
+
+/* LOGO SUBTEXT */
+.logo-sub {
+  font-family: var(--mono);
+  animation: subtlePulse 3.5s ease-in-out infinite;
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+  font-family: var(--mono);
+  letter-spacing: 0.12em;
+}
+
+/* THEMES */
 .dark-tile {
   background: #141414;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 4px 16px rgba(0, 0, 0, 0.6);
@@ -38,25 +61,17 @@
 }
 
 /* Nav button hover pill */
-/* hover can't be expressed in [ngClass], so we use a CSS class  */
 .nav-btn:not(.active):hover {
   background: rgba(200, 240, 61, 0.08);
 }
 
-/* light mode hover — slightly darker pill */
 body.light .nav-btn:not(.active):hover {
   background: rgba(0, 0, 0, 0.055);
 }
 
 /* logo sub-label pulse */
-.logo-sub {
-  animation: subtlePulse 3.5s ease-in-out infinite;
-}
-
 @keyframes subtlePulse {
-
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.5;
     letter-spacing: 2.2px;
   }
@@ -67,7 +82,7 @@ body.light .nav-btn:not(.active):hover {
   }
 }
 
-/* mobile role-switching (< 600 px) */
+/* mobile role-switching */
 @media (max-width: 599px) {
   .logo-sub {
     position: relative;

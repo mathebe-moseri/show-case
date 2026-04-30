@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap');
 
 /* CSS custom properties */
 :host {
@@ -10,9 +9,6 @@
   --text-hi: #e8e8e0;
   --text-md: #888880;
   --text-lo: #3a3a38;
-  --mono: 'Space Mono', monospace;
-  --sans: 'IBM Plex Sans', sans-serif;
-  --display: 'Bebas Neue', sans-serif;
 }
 
 /* section */
