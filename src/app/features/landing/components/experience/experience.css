@@ -1,0 +1,221 @@
+:host {
+  --lime: #b4ff64;
+  --lime-dim: rgba(180, 255, 100, 0.55);
+  --lime-faint: rgba(180, 255, 100, 0.07);
+  --border: rgba(255, 255, 255, 0.055);
+  --surface: rgba(255, 255, 255, 0.018);
+  --text-hi: #e8e8e0;
+  --text-md: #888880;
+  --text-lo: #3a3a38;
+}
+
+.col-experience {
+  padding-left: 32px;
+}
+
+.exp-item {
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  position: relative;
+}
+
+.exp-item:first-of-type {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.exp-item--active::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 24px;
+  width: 2px;
+  height: 36px;
+  background: var(--lime-dim);
+  animation: accent-pulse 2.5s ease-in-out infinite;
+}
+
+.exp-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.exp-company {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(180, 255, 100, 0.95);
+  letter-spacing: 0.14em;
+}
+
+.exp-period {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: #6f6f66;
+  letter-spacing: 0.06em;
+}
+
+.exp-role {
+  font-size: 15px;
+  font-weight: 500;
+  color: #e8e8e0;
+  margin: 5px 0 10px;
+  letter-spacing: 0.01em;
+}
+
+.exp-highlight {
+  font-size: 12.5px;
+  line-height: 1.75;
+  margin: 12px 0;
+  padding: 12px 14px;
+  background: rgba(180, 255, 100, 0.08);
+  border-left: 2px solid rgba(180, 255, 100, 0.8);
+  color: #dcdcd4;
+}
+
+.private-note {
+  font-size: 10px;
+  color: rgba(180, 255, 100, 0.45);
+  margin-left: 6px;
+  font-style: italic;
+}
+
+.exp-list {
+  margin: 10px 0 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.exp-list li {
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: #6a6a64;
+  font-weight: 300;
+  padding-left: 16px;
+  position: relative;
+}
+
+.exp-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-lo);
+  font-size: 10px;
+  top: 1px;
+}
+
+.tenure-bar {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.tenure-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  color: #7a7a72;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.tenure-track {
+  position: relative;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tenure-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(to right, rgba(180, 255, 100, 0.4), rgba(180, 255, 100, 0.95));
+  border-radius: 2px;
+  animation: fill-in 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+.highlight {
+  color: #c8c8c0;
+  font-weight: 400;
+}
+
+/* reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  filter: blur(6px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s ease;
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+/* zoom wrapper */
+.zoom-wrapper {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.zoom-active {
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+.zoom-dim {
+  transform: scale(0.97);
+  opacity: 0.6;
+}
+
+/* stagger delays */
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.30s; }
+.delay-3 { transition-delay: 0.45s; }
+.delay-4 { transition-delay: 0.60s; }
+.delay-5 { transition-delay: 0.75s; }
+.delay-6 { transition-delay: 0.90s; }
+
+@keyframes fill-in {
+  to { width: 100%; }
+}
+
+@keyframes accent-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.08; }
+}
+
+/* responsive */
+@media (max-width: 860px) {
+  .col-experience {
+    padding-left: 0;
+  }
+
+  .exp-item--active::before {
+    display: none;
+  }
+}
