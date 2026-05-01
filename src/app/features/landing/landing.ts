@@ -5,10 +5,11 @@ import {
 import { Navbar } from "../../core/layout/navbar/navbar";
 import { Hero } from "./components/hero/hero";
 import { About } from './components/about/about';
+import { Skills } from "./components/skills/skills";
 
 @Component({
   selector: 'app-landing',
-  imports: [Navbar, Hero, About],
+  imports: [Navbar, Hero, About, Skills],
   templateUrl: './landing.html',
   styleUrl: './landing.css',
 })

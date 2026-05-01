@@ -142,7 +142,7 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   private startTypewriter() {
     const type = () => {
-      if (!this.typewriterVisible) return;// pause when hidden
+      if (!this.typewriterVisible) return;
 
       const target = this.roles[this.roleIndex];
 
@@ -184,7 +184,7 @@ export class Hero implements AfterViewInit, OnDestroy {
     keyLight.position.set(3, 5, 5);
     this.scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(0xc8f03d, 1.8);
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.6);
     rimLight.position.set(-4, 2, -3);
     this.scene.add(rimLight);
 
@@ -198,17 +198,12 @@ export class Hero implements AfterViewInit, OnDestroy {
     this.animate();
   }
 
-  // avatar
   private buildAvatar(): THREE.Group {
     const group = new THREE.Group();
 
     const skin = new THREE.MeshStandardMaterial({ color: 0xe0b89a, roughness: 0.8 });
     const dark = new THREE.MeshStandardMaterial({ color: 0x1a1a1a, roughness: 0.9 });
-    const accent = new THREE.MeshStandardMaterial({
-      color: 0xc8f03d,
-      emissive: new THREE.Color(0xc8f03d),
-      emissiveIntensity: 0.15
-    });
+    const accent = new THREE.MeshStandardMaterial({ color: 0xc8f03d, roughness: 0.9 });
     const hair = new THREE.MeshStandardMaterial({ color: 0x2a1a0f, roughness: 1.0 });
     const trouser = new THREE.MeshStandardMaterial({ color: 0x222222 });
     const soft = new THREE.MeshStandardMaterial({ color: 0x333333 });
@@ -251,8 +246,7 @@ export class Hero implements AfterViewInit, OnDestroy {
 
     // body
     add(new THREE.BoxGeometry(1.1, 1.4, 0.7), soft, 0, 1.2, 0);
-    add(new THREE.BoxGeometry(0.1, 1.4, 0.72), accent, 0, 1.2, 0);
-
+add(new THREE.BoxGeometry(0.1, 1.2, 0.68), accent, 0, 1.05, 0);
     // shoulders
     add(new THREE.BoxGeometry(0.35, 0.35, 0.6), soft, -0.75, 1.7, 0);
     add(new THREE.BoxGeometry(0.35, 0.35, 0.6), soft, 0.75, 1.7, 0);
@@ -277,6 +271,7 @@ export class Hero implements AfterViewInit, OnDestroy {
 
     return group;
   }
+
   private addDragControls(canvas: HTMLCanvasElement) {
     canvas.addEventListener('mousedown', (e) => {
       this.isDragging = true;
@@ -302,7 +297,7 @@ export class Hero implements AfterViewInit, OnDestroy {
   private animate() {
     this.frameId = requestAnimationFrame(() => this.animate());
 
-    const floatY = Math.sin(Date.now() * 0.001) * 0.04 - 1.6;
+    const floatY = Math.sin(Date.now() * 0.001) * 0.01 - 1.6;
 
     if (!this.isDragging) {
       if (this.isHovering) {
@@ -311,15 +306,11 @@ export class Hero implements AfterViewInit, OnDestroy {
         const targetY = floatY + this.mouse.y * 0.3;
         const targetZ = this.mouse.x * -2.2;
 
-        // position (parallax)
         this.avatar.position.x += (targetX - this.avatar.position.x) * 0.08;
         this.avatar.position.y += (targetY - this.avatar.position.y) * 0.08;
         this.avatar.position.z += (targetZ - this.avatar.position.z) * 0.08;
 
-        // left/right face visibility
         this.avatar.rotation.y += (this.mouse.x * 0.8 - this.avatar.rotation.y) * 0.08;
-
-        // up/down tilt
         this.avatar.rotation.x += (-this.mouse.y * 0.4 - this.avatar.rotation.x) * 0.08;
 
       } else {
@@ -341,19 +332,15 @@ export class Hero implements AfterViewInit, OnDestroy {
       this.nextBlinkTime = now + 1500 + Math.random() * 2500;
     }
 
-    // blink both eyes
     if (this.blinked) {
-      const duration = 300; // total blink time (adjust speed here)
+      const duration = 300;
       const elapsed = Date.now() - this.blinkStart;
       const t = elapsed / duration;
 
       if (t < 1) {
-        // smooth symmetric curve (sin wave)
         const scale = Math.abs(Math.cos(t * Math.PI));
-
         this.leftEye.scale.y = Math.max(0.01, scale);
         this.rightEye.scale.y = Math.max(0.01, scale);
-
       } else {
         this.leftEye.scale.y = 1;
         this.rightEye.scale.y = 1;
@@ -401,9 +388,7 @@ export class Hero implements AfterViewInit, OnDestroy {
           clearTimeout(this.typeTimer);
         }
       },
-      {
-        threshold: 0.3
-      }
+      { threshold: 0.3 }
     );
 
     this.typewriterObserver.observe(el);

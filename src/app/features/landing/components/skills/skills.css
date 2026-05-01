@@ -1,0 +1,351 @@
+
+:host {
+  display: block;
+  width: 100%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.skills-section {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 60px 3rem;
+  position: relative;
+  margin-top: -60px;
+}
+
+/* header */
+.skills-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.header-left {
+  flex-shrink: 0;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.15; }
+}
+
+.label-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: rgba(200, 241, 53, 0.9);
+  text-transform: uppercase;
+}
+
+.header-right {
+  flex-shrink: 0;
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.25);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color 0.22s ease, color 0.22s ease, background 0.22s ease, transform 0.15s ease;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: relative;
+}
+
+.tab-btn:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.tab-btn:active {
+  transform: translateY(0);
+}
+
+.tab-btn.active {
+  border-color: rgba(200, 241, 53, 0.5);
+  color: #c8f135;
+  background: rgba(200, 241, 53, 0.06);
+}
+
+.tab-btn.active::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: #c8f135;
+  opacity: 0.7;
+}
+
+/*marquee outer wrapper */
+.marquee-outer {
+  width: calc(100% + 120px);
+  margin-left: -60px;
+  overflow: hidden;
+  padding: 0.25rem 0 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+/* track — fade wrapper handles opacity */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: marquee-scroll 60s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track.no-scroll {
+  animation: none;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-set {
+  display: contents;
+}
+
+/* transition overlay — fades the whole
+   marquee-outer content in/out */
+.marquee-outer {
+  position: relative;
+}
+
+.track-fade-wrapper {
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  will-change: opacity, transform;
+}
+
+.track-fade-wrapper.is-leaving {
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+}
+
+.track-fade-wrapper.is-entering {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+/* entering cards animate in with a stagger applied via JS inline style */
+.track-fade-wrapper.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* tool card */
+.tool-card {
+  flex: 0 0 160px;
+  width: 160px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 1.5rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: default;
+  box-sizing: border-box;
+  position: relative;
+  /* Individual card entrance animation */
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    border-color 0.22s ease,
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 70%;
+  height: 1px;
+  background: #c8f135;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tool-card:hover {
+  border-color: rgba(200, 241, 53, 0.2);
+  transform: translateY(-4px);
+  background: #161616;
+}
+
+.tool-card:hover::before {
+  opacity: 0.6;
+}
+
+/* cards stagger in after category switch */
+.tool-card.card-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.tool-card.card-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-logo {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #d0d0d0;
+  text-align: center;
+  letter-spacing: 0.02em;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: nowrap;
+}
+
+.card-category {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(200, 241, 53, 0.5);
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+/* default hidden state, only applies before
+   the observer fires, so there's no flash */
+:host:not(.skills-visible) .skills-header,
+:host:not(.skills-visible) .marquee-outer {
+  opacity: 0;
+}
+
+/* keyframes */
+@keyframes skills-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skills-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* label text */
+:host(.skills-visible) .section-label {
+  animation: skills-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+/* tab row slides in from the right */
+:host(.skills-visible) .header-right {
+  animation: skills-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* marquee strip fades in a beat after the header */
+:host(.skills-visible) .marquee-outer {
+  animation: skills-fade-in 0.55s ease 0.3s both;
+}
+
+:host(.skills-visible) .marquee-track.no-scroll .tool-card {
+  animation: skills-fade-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* responsive */
+@media (max-width: 860px) {
+  .skills-section {
+    padding: 1rem 24px 2.5rem;
+  }
+
+  .skills-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .filter-tabs {
+    justify-content: flex-start;
+  }
+
+  .marquee-outer {
+    width: calc(100% + 48px);
+    margin-left: -24px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .tool-card {
+    flex: 0 0 130px;
+    width: 130px;
+  }
+
+  .marquee-track.no-scroll {
+    padding: 0 24px;
+  }
+}

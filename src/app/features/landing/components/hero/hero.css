@@ -173,5 +173,5 @@
 
 .typewriter-text {
   display: inline-block;
-  min-width: 280px;   /* 👈 adjust based on longest text */
+  min-width: 280px;   /* adjust based on longest text */
 }

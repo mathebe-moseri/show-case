@@ -1,1 +1,48 @@
-<p>skills works!</p>
+<section class="skills-section">
+  <div class="skills-header">
+    <div class="header-left">
+      <div class="section-label">
+        <span class="label-text">TECH STACK</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="filter-tabs" role="tablist">
+        @for (cat of categories; track cat) {
+          <button
+            class="tab-btn"
+            [class.active]="activeCategory() === cat"
+            (click)="setCategory(cat)"
+            role="tab"
+            [attr.aria-selected]="activeCategory() === cat"
+          >
+            {{ cat }}
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="marquee-outer">
+    <div class="marquee-track" [class.no-scroll]="activeCategory() !== 'ALL'" #marqueeTrack>
+      <div class="marquee-set">
+        @for (tool of filteredTools(); track tool.name) {
+          <div class="tool-card">
+            <div class="card-logo" [innerHTML]="sanitize(tool.svgLogo)"></div>
+            <span class="card-name">{{ tool.name }}</span>
+            <span class="card-category">{{ tool.category }}</span>
+          </div>
+        }
+      </div>
+      @if (activeCategory() === 'ALL') {
+        <div class="marquee-set" aria-hidden="true">
+          @for (tool of filteredTools(); track tool.name + '_dup') {
+            <div class="tool-card">
+              <div class="card-logo" [innerHTML]="sanitize(tool.svgLogo)"></div>
+              <span class="card-name">{{ tool.name }}</span>
+              <span class="card-category">{{ tool.category }}</span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>

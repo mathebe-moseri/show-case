@@ -284,3 +284,8 @@ body.light .corner-accent { background-color: #5a8a00; }
 body.light .drag-hint {
   color: #aaaaaa;                             /* lightmode */
 }
+
+section {
+  margin: 0;
+  padding: 0;
+}
