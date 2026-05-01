@@ -1,5 +1,3 @@
-
-/* CSS custom properties */
 :host {
   --lime: #b4ff64;
   --lime-dim: rgba(180, 255, 100, 0.55);
@@ -189,7 +187,7 @@
   margin-top: 20px;
 }
 
-/* corner accents, requires absolute positioning + pseudo-borders */
+/* corner accents */
 .ca {
   position: absolute;
   width: 13px;
@@ -260,7 +258,7 @@
   font-family: var(--mono);
   font-size: 8px;
   letter-spacing: 0.2em;
-  color: var(--text-lo);
+  color: rgba(255, 255, 255, 0.65);
   text-transform: uppercase;
 }
 
@@ -316,10 +314,10 @@
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 0.12em;
-  color: var(--text-lo);
+  color: rgba(255, 255, 255, 0.65);
   text-transform: uppercase;
   text-decoration: none;
-  border-bottom: 1px solid var(--text-lo);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -486,7 +484,7 @@
   gap: 7px;
 }
 
-/* custom list bullets via ::before, not achievable with Tailwind */
+/* custom list bullets via ::before */
 .exp-list li {
   font-size: 12.5px;
   line-height: 1.75;
@@ -529,7 +527,7 @@
   overflow: hidden;
 }
 
-/* animated fill, keyframe animation, not achievable with Tailwind */
+/* animated fill, keyframe animation */
 .tenure-fill {
   position: absolute;
   left: 0;
@@ -560,7 +558,6 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
-  /* Fallback: auto-reveal after 800ms in case IntersectionObserver misses it */
   animation: reveal-fallback 0.6s ease 0.8s forwards;
 }
 
@@ -706,21 +703,51 @@
 }
 
 @keyframes zoomNoticeable {
-  0%   { transform: scale(1); }
-  15%  { transform: scale(1.015); }
+  0% {
+    transform: scale(1);
+  }
 
-  /* 👇 HOLD so user actually sees it */
-  40%  { transform: scale(1.015); }
+  15% {
+    transform: scale(1.015);
+  }
 
-  60%  { transform: scale(1); }
+  40% {
+    transform: scale(1.015);
+  }
 
-  /* second soft pulse */
-  75%  { transform: scale(1.012); }
-  90%  { transform: scale(1.012); }
+  60% {
+    transform: scale(1);
+  }
 
-  100% { transform: scale(1); }
+  75% {
+    transform: scale(1.012);
+  }
+
+  90% {
+    transform: scale(1.012);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .zoom-wrapper.zoom-focus {
   animation: zoomNoticeable 2.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.zoom-wrapper {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* zoomed in */
+.zoom-active {
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+/* zoomed out */
+.zoom-dim {
+  transform: scale(0.97);
+  opacity: 0.6;
 }

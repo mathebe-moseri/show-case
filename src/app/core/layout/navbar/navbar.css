@@ -1,5 +1,4 @@
 
-/* NAV ROOT */
 nav {
   font-family: var(--sans);
 }
@@ -12,25 +11,25 @@ nav {
   transition: background 0.4s, box-shadow 0.4s;
 }
 
-/* LOGO NAME (main identity) */
+/* logo name (main identity) */
 .logo-name {
   font-family: var(--display);
   letter-spacing: 0.04em;
 }
 
-/* LOGO SUBTEXT */
+/* logo subtext */
 .logo-sub {
   font-family: var(--mono);
   animation: subtlePulse 3.5s ease-in-out infinite;
 }
 
-/* NAV BUTTONS */
+/* nav buttons */
 .nav-btn {
   font-family: var(--mono);
   letter-spacing: 0.12em;
 }
 
-/* THEMES */
+/* themes */
 .dark-tile {
   background: #141414;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 4px 16px rgba(0, 0, 0, 0.6);
@@ -60,7 +59,7 @@ nav {
     linear-gradient(90deg, rgba(0, 0, 0, 0.09) 1px, transparent 1px);
 }
 
-/* Nav button hover pill */
+/* nav button hover pill */
 .nav-btn:not(.active):hover {
   background: rgba(200, 240, 61, 0.08);
 }
@@ -71,7 +70,9 @@ body.light .nav-btn:not(.active):hover {
 
 /* logo sub-label pulse */
 @keyframes subtlePulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.5;
     letter-spacing: 2.2px;
   }

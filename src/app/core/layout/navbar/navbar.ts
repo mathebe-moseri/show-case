@@ -54,47 +54,63 @@ export class Navbar {
     }
   }
 
-scrollToSection(section: string) {
-  console.log('Clicked section:', section);
+  scrollToSection(section: string) {
+    console.log('Clicked section:', section);
 
-  this.activeSection.set(section);
-  this.menuOpen.set(false);
+    this.activeSection.set(section);
+    this.menuOpen.set(false);
 
-  const element = document.getElementById(section);
+    const element = document.getElementById(section);
 
-  if (element) {
-    const navbarHeight = 80;
+    if (element) {
+      const navbarHeight = 80;
 
-    const elementPosition =
-      element.getBoundingClientRect().top + window.scrollY;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
 
-    const offsetPosition = elementPosition - navbarHeight;
+      const offsetPosition = elementPosition - navbarHeight;
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
 
-    // 🔥 ADD THIS PART (animation trigger)
-    let target: HTMLElement | null = null;
+      if (window.innerWidth < 768) return;
+
+      let target: HTMLElement | null = null;
+
+      if (section === 'about') {
+        target = element.querySelector('.zoom-wrapper') as HTMLElement;
+      }
+
+      if (section === 'experience') {
+        target = document.querySelectorAll('.zoom-wrapper')[1] as HTMLElement;
+      }
+    }
+    if (section === 'about' || section === 'experience') {
+      if (window.matchMedia('(max-width: 860px)').matches) return;
+
+      this.setFocus(section as 'about' | 'experience');
+    }
+  }
+
+  setFocus(section: 'about' | 'experience') {
+    const about = document.getElementById('aboutWrap');
+    const exp = document.getElementById('expWrap');
+
+    if (!about || !exp) return;
+
+    about.classList.remove('zoom-active', 'zoom-dim');
+    exp.classList.remove('zoom-active', 'zoom-dim');
 
     if (section === 'about') {
-  target = element.querySelector('.zoom-wrapper') as HTMLElement;
+      about.classList.add('zoom-active');
+      exp.classList.add('zoom-dim');
     }
 
     if (section === 'experience') {
-target = document.querySelectorAll('.zoom-wrapper')[1] as HTMLElement;
-    }
-
-    if (target) {
-      target.classList.remove('zoom-focus');
-
-      // restart animation
-      void target.offsetWidth;
-
-      target.classList.add('zoom-focus');
+      exp.classList.add('zoom-active');
+      about.classList.add('zoom-dim');
     }
   }
-}
-
 }

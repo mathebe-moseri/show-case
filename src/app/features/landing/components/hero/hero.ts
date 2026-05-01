@@ -22,9 +22,13 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   @ViewChild('avatarCanvas') canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('heroSection') heroRef!: ElementRef<HTMLDivElement>;
+  @ViewChild('typewriterEl') typewriterRef!: ElementRef<HTMLDivElement>;
 
   private mouse = { x: 0, y: 0 };
   private isHovering = false;
+
+  private typewriterVisible = false;
+  private typewriterObserver!: IntersectionObserver;
 
   currentRole = '';
   private roles = [
@@ -50,7 +54,6 @@ export class Hero implements AfterViewInit, OnDestroy {
   private leftEye!: THREE.Mesh;
   private rightEye!: THREE.Mesh;
 
-  // blink
   private blinked = false;
   private blinkStart = 0;
   private nextBlinkTime = Date.now() + 1500;
@@ -59,21 +62,30 @@ export class Hero implements AfterViewInit, OnDestroy {
   private observer!: IntersectionObserver;
   private typewriterStarted = false;
 
+  private hasScrolled = false;
+
   ngAfterViewInit() {
     this.setupVisibilityObserver();
+    this.setupTypewriterObserver();
 
     this.resolveCanvasSize();
     this.initThree();
     this.initCursorTracking();
 
     window.addEventListener('resize', this.onResize);
+
+    window.addEventListener('scroll', this.handleScroll);
+    this.setupScrollCueObserver();
   }
 
   ngOnDestroy() {
     clearTimeout(this.typeTimer);
     cancelAnimationFrame(this.frameId);
-    this.observer?.disconnect(); // 👈 ADD THIS
+    this.observer?.disconnect();
+
     window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.handleScroll);
+
     this.renderer?.dispose();
   }
 
@@ -130,7 +142,7 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   private startTypewriter() {
     const type = () => {
-      if (!this.isVisible) return; // pause when hidden
+      if (!this.typewriterVisible) return;// pause when hidden
 
       const target = this.roles[this.roleIndex];
 
@@ -148,9 +160,9 @@ export class Hero implements AfterViewInit, OnDestroy {
           this.roleIndex = (this.roleIndex + 1) % this.roles.length;
         }
       }
-      this.typeTimer = setTimeout(type, this.deleting ? 42 : 75);
+      this.typeTimer = setTimeout(type, this.deleting ? 100 : 160);
     };
-    this.typeTimer = setTimeout(type, 600);
+    this.typeTimer = setTimeout(type, 400);
   }
 
   private initThree() {
@@ -371,5 +383,63 @@ export class Hero implements AfterViewInit, OnDestroy {
     );
 
     this.observer.observe(el);
+  }
+
+  private setupTypewriterObserver() {
+    const el = this.typewriterRef.nativeElement;
+
+    this.typewriterObserver = new IntersectionObserver(
+      ([entry]) => {
+        this.typewriterVisible = entry.isIntersecting;
+
+        if (this.typewriterVisible && !this.typewriterStarted) {
+          this.typewriterStarted = true;
+          this.startTypewriter();
+        }
+
+        if (!this.typewriterVisible) {
+          clearTimeout(this.typeTimer);
+        }
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+    this.typewriterObserver.observe(el);
+  }
+
+  private handleScroll = () => {
+    const el = document.querySelector('.scroll-fade-line') as HTMLElement;
+
+    if (!el) return;
+
+    if (!this.hasScrolled && window.scrollY > 0) {
+      this.hasScrolled = true;
+
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      el.style.opacity = '0';
+      el.style.transform = 'translate(-50%, 10px)';
+    }
+  };
+
+  private setupScrollCueObserver() {
+    const hero = this.heroRef.nativeElement;
+    const el = document.querySelector('.scroll-fade-line') as HTMLElement;
+
+    if (!hero || !el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          el.style.opacity = '0';
+          el.style.transform = 'translate(-50%, 10px)';
+        }
+      },
+      { threshold: 0.9 }
+    );
+
+    observer.observe(hero);
   }
 }
