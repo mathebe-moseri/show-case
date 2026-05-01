@@ -6,10 +6,11 @@ import { Navbar } from "../../core/layout/navbar/navbar";
 import { Hero } from "./components/hero/hero";
 import { About } from './components/about/about';
 import { Skills } from "./components/skills/skills";
+import { Contact } from "./components/contact/contact";
 
 @Component({
   selector: 'app-landing',
-  imports: [Navbar, Hero, About, Skills],
+  imports: [Navbar, Hero, About, Skills, Contact],
   templateUrl: './landing.html',
   styleUrl: './landing.css',
 })
