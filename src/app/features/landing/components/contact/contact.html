@@ -1,108 +1,73 @@
+<!-- Add this inside <head> -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
 <section class="contact-section" id="contact">
 
-  <div class="section-tag">
-    <span class="dot"></span>
-    Contact
-  </div>
-
-  <h2 class="section-title">Let's <span class="accent">build something.</span></h2>
-  <p class="section-sub">
-    Open to remote opportunities, freelance work, and interesting problems.
-    Response time: usually same day.
-  </p>
+  <h2 class="section-title">
+    Let's <span class="accent">build something.</span>
+  </h2>
 
   <div class="contact-grid">
 
-    <!-- ── Left: quick links ───────────────────────────────────────────── -->
-    <div class="links-col">
+    <!-- ── Left: Social Icons ───────────────────────── -->
+    <div class="social-icons">
 
-      <a class="contact-link" href="mailto:your@email.com">
-        <div class="link-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <rect x="1" y="3" width="14" height="10" rx="1" stroke="#c8f135" stroke-width="1"/>
-            <path d="M1 4.5l7 5 7-5" stroke="#c8f135" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="link-text">
-          <span class="link-label">Email</span>
-          <span class="link-value">your&#64;email.com</span>
-        </div>
-        <span class="link-arrow">→</span>
+      <!-- Gmail -->
+      <a
+        href="mailto:your@email.com"
+        class="icon gmail"
+        data-label="your@email.com"
+      >
+        <i class="fa-solid fa-envelope"></i>
       </a>
 
-      <a class="contact-link" href="https://wa.me/27600000000" target="_blank" rel="noopener">
-        <div class="link-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="7" stroke="#c8f135" stroke-width="1"/>
-            <path d="M5 8.5c0-1.657 1.343-3 3-3s3 1.343 3 3c0 .67-.22 1.29-.59 1.79L11 13l-2.5-.7A2.99 2.99 0 015 8.5z"
-              stroke="#c8f135" stroke-width="1" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="link-text">
-          <span class="link-label">WhatsApp</span>
-          <span class="link-value">Direct message — free</span>
-        </div>
-        <span class="link-arrow">→</span>
+      <!-- WhatsApp -->
+      <a
+        href="https://wa.me/27600000000"
+        target="_blank"
+        class="icon whatsapp"
+        data-label="+27 60 000 0000"
+      >
+        <i class="fa-brands fa-whatsapp"></i>
       </a>
 
-      <a class="contact-link" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">
-        <div class="link-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <rect x="1" y="1" width="14" height="14" rx="2" stroke="#c8f135" stroke-width="1"/>
-            <path d="M4 6.5V12M4 4.5V5M7 12V9c0-1.1.9-2 2-2s2 .9 2 2v3M7 6.5V12"
-              stroke="#c8f135" stroke-width="1" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="link-text">
-          <span class="link-label">LinkedIn</span>
-          <span class="link-value">/in/yourprofile</span>
-        </div>
-        <span class="link-arrow">→</span>
+      <!-- LinkedIn -->
+      <a
+        href="https://linkedin.com/in/yourprofile"
+        target="_blank"
+        class="icon linkedin"
+        data-label="linkedin.com/in/yourprofile"
+      >
+        <i class="fa-brands fa-linkedin"></i>
       </a>
 
-      <a class="contact-link" href="https://github.com/yourusername" target="_blank" rel="noopener">
-        <div class="link-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M8 1C4.134 1 1 4.134 1 8c0 3.09 2.006 5.715 4.788 6.637.35.064.478-.152.478-.337
-              0-.166-.006-.607-.01-1.19-1.947.423-2.358-.94-2.358-.94-.318-.808-.777-1.023-.777-1.023
-              -.636-.434.048-.425.048-.425.703.049 1.073.722 1.073.722.624 1.07 1.637.761 2.036.582
-              .063-.452.244-.762.444-.937-1.554-.177-3.188-.777-3.188-3.459 0-.764.273-1.388.721-1.879
-              -.072-.177-.313-.889.069-1.853 0 0 .587-.188 1.924.717A6.707 6.707 0 018 4.973c.595.003
-              1.194.08 1.754.236 1.336-.905 1.922-.717 1.922-.717.383.964.142 1.676.07 1.853.449.491
-              .72 1.115.72 1.879 0 2.689-1.637 3.28-3.196 3.454.251.216.475.644.475 1.298 0 .937-.009
-              1.692-.009 1.922 0 .187.126.405.482.337C12.997 13.712 15 11.088 15 8c0-3.866-3.134-7-7-7z"
-              fill="#c8f135"/>
-          </svg>
-        </div>
-        <div class="link-text">
-          <span class="link-label">GitHub</span>
-          <span class="link-value">github.com/yourusername</span>
-        </div>
-        <span class="link-arrow">→</span>
+      <!-- GitHub -->
+      <a
+        href="https://github.com/yourusername"
+        target="_blank"
+        class="icon github"
+        data-label="github.com/yourusername"
+      >
+        <i class="fa-brands fa-github"></i>
       </a>
 
-    </div><!-- /links-col -->
+    </div>
 
-    <!-- ── Right: contact form ─────────────────────────────────────────── -->
+    <!-- ── Middle: Contact Form ────────────────────── -->
     <div class="form-panel">
+
       <div class="corner corner-tl"></div>
       <div class="corner corner-br"></div>
 
-      <div class="form-header">
-        <span class="form-comment">// send_message.form</span>
-        <span class="form-badge">FREE · FORMSPREE</span>
-      </div>
-
-      <!-- Success state -->
+      <!-- Success -->
       <div class="status-box status-success" *ngIf="status === 'success'">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <circle cx="8" cy="8" r="7" stroke="#c8f135" stroke-width="1"/>
-          <path d="M5 8l2 2 4-4" stroke="#c8f135" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
         Message sent. I'll get back to you shortly.
       </div>
 
-      <!-- Error state -->
+      <!-- Error -->
       <div class="status-box status-error" *ngIf="status === 'error'">
         Something went wrong. Try emailing directly instead.
       </div>
@@ -111,6 +76,7 @@
       <form (ngSubmit)="onSubmit()" *ngIf="status !== 'success'">
 
         <div class="field-row">
+
           <div class="field">
             <label for="c-name">Name</label>
             <input
@@ -122,6 +88,7 @@
               required
             />
           </div>
+
           <div class="field">
             <label for="c-email">Email</label>
             <input
@@ -133,6 +100,7 @@
               required
             />
           </div>
+
         </div>
 
         <div class="field">
@@ -157,24 +125,29 @@
           ></textarea>
         </div>
 
-        <button class="btn-submit" type="submit" [disabled]="isSubmitting">
-          <span *ngIf="!isSubmitting">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M1 7h12M8 2l5 5-5 5" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Send message
-          </span>
-          <span *ngIf="isSubmitting" class="sending-dots">Sending...</span>
+        <button
+          class="btn-submit"
+          type="submit"
+          [disabled]="isSubmitting"
+        >
+          Send message
         </button>
 
-        <p class="formspree-note">
-          Powered by <a href="https://formspree.io" target="_blank" rel="noopener">formspree.io</a>
-          &nbsp;·&nbsp; free up to 50 messages/month &nbsp;·&nbsp; no backend needed
-        </p>
-
       </form>
-    </div><!-- /form-panel -->
 
-  </div><!-- /contact-grid -->
+    </div>
+
+    <!-- ── Right: Image ────────────────────────────── -->
+    <div class="contact-image">
+      <img
+        src="images/me.png"
+        alt="Contact Illustration"
+      />
+    </div>
+
+  </div>
 
 </section>
+<footer class="portfolio-footer">
+  © 2026 Mathebe Moseri. All rights reserved.
+</footer>
