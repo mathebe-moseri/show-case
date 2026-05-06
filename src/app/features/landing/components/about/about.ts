@@ -1,9 +1,8 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { Experience } from '../experience/experience';
 
 @Component({
   selector: 'app-about',
-  imports: [Experience],
+  imports: [],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
