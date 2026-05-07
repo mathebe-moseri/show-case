@@ -37,6 +37,17 @@ export class About implements AfterViewInit {
     }, 100);
   }
 
+  scrollToContact() {
+    const section = document.getElementById('contact');
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+
   private bindZoom() {
     const about = document.getElementById('aboutWrap');
     const exp = this.expWrap;
