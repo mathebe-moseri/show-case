@@ -6,14 +6,16 @@
 
 <section class="contact-section" id="contact">
 
-  <h2 class="section-title">
+  <!-- ── Section Title ───────────────────────────── -->
+  <h2 class="section-title contact-fade-1">
     Let's <span class="accent">build something.</span>
   </h2>
 
-  <div class="contact-grid">
+  <!-- ── Main Contact Layout ────────────────────── -->
+  <div class="contact-grid contact-fade-2">
 
-    <!-- ── Left: Social Icons ───────────────────────── -->
-    <div class="social-icons">
+    <!-- ── Left: Social Icons ───────────────────── -->
+    <div class="social-icons contact-fade-3">
 
       <!-- Gmail -->
       <a
@@ -56,29 +58,42 @@
 
     </div>
 
-    <!-- ── Middle: Contact Form ────────────────────── -->
-    <div class="form-panel">
+    <!-- ── Middle: Contact Form ─────────────────── -->
+    <div class="form-panel contact-fade-3">
 
+      <!-- Corner Decorations -->
       <div class="corner corner-tl"></div>
       <div class="corner corner-br"></div>
 
-      <!-- Success -->
-      <div class="status-box status-success" *ngIf="status === 'success'">
+      <!-- Success Message -->
+      <div
+        class="status-box status-success"
+        *ngIf="status === 'success'"
+      >
         Message sent. I'll get back to you shortly.
       </div>
 
-      <!-- Error -->
-      <div class="status-box status-error" *ngIf="status === 'error'">
+      <!-- Error Message -->
+      <div
+        class="status-box status-error"
+        *ngIf="status === 'error'"
+      >
         Something went wrong. Try emailing directly instead.
       </div>
 
-      <!-- Form -->
-      <form (ngSubmit)="onSubmit()" *ngIf="status !== 'success'">
+      <!-- Contact Form -->
+      <form
+        (ngSubmit)="onSubmit()"
+        *ngIf="status !== 'success'"
+      >
 
+        <!-- Name + Email -->
         <div class="field-row">
 
+          <!-- Name -->
           <div class="field">
             <label for="c-name">Name</label>
+
             <input
               id="c-name"
               type="text"
@@ -89,8 +104,10 @@
             />
           </div>
 
+          <!-- Email -->
           <div class="field">
             <label for="c-email">Email</label>
+
             <input
               id="c-email"
               type="email"
@@ -103,8 +120,11 @@
 
         </div>
 
+        <!-- Subject -->
         <div class="field">
+
           <label for="c-subject">Subject</label>
+
           <input
             id="c-subject"
             type="text"
@@ -112,10 +132,14 @@
             [(ngModel)]="formData.subject"
             name="subject"
           />
+
         </div>
 
+        <!-- Message -->
         <div class="field">
+
           <label for="c-message">Message</label>
+
           <textarea
             id="c-message"
             placeholder="Describe what you're building or what you need..."
@@ -123,8 +147,10 @@
             name="message"
             required
           ></textarea>
+
         </div>
 
+        <!-- Submit Button -->
         <button
           class="btn-submit"
           type="submit"
@@ -137,17 +163,21 @@
 
     </div>
 
-    <!-- ── Right: Image ────────────────────────────── -->
-    <div class="contact-image">
+    <!-- ── Right: Profile Image ─────────────────── -->
+    <div class="contact-image contact-fade-4">
+
       <img
         src="images/me.png"
         alt="Contact Illustration"
       />
+
     </div>
 
   </div>
 
 </section>
-<footer class="portfolio-footer">
+
+<!-- ── Footer ───────────────────────────────────── -->
+<footer class="portfolio-footer contact-fade-4">
   © 2026 Mathebe Moseri. All rights reserved.
 </footer>
