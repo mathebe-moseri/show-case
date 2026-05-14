@@ -246,7 +246,7 @@ export class Hero implements AfterViewInit, OnDestroy {
 
     // body
     add(new THREE.BoxGeometry(1.1, 1.4, 0.7), soft, 0, 1.2, 0);
-add(new THREE.BoxGeometry(0.1, 1.2, 0.68), accent, 0, 1.05, 0);
+    add(new THREE.BoxGeometry(0.1, 1.2, 0.68), accent, 0, 1.05, 0);
     // shoulders
     add(new THREE.BoxGeometry(0.35, 0.35, 0.6), soft, -0.75, 1.7, 0);
     add(new THREE.BoxGeometry(0.35, 0.35, 0.6), soft, 0.75, 1.7, 0);

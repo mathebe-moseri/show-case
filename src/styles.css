@@ -30,7 +30,12 @@ body.light {
 }
 
 /* base */
-html, body { min-height: 100%; }
+html,
+body {
+  min-height: 100%;
+  min-width: 100%;
+
+}
 
 body {
   background-color: var(--bg);
@@ -288,4 +293,11 @@ body.light .drag-hint {
 section {
   margin: 0;
   padding: 0;
+}
+
+.skills-section,
+.about-section,
+.contact-section,
+.zoom-wrapper {
+  overflow-x: clip;
 }

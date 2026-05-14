@@ -278,12 +278,10 @@
   width: 85%;
   height: 85%;
 
-  background: radial-gradient(
-    circle,
-    rgba(200, 241, 53, 0.18) 0%,
-    rgba(200, 241, 53, 0.08) 35%,
-    transparent 75%
-  );
+  background: radial-gradient(circle,
+      rgba(200, 241, 53, 0.18) 0%,
+      rgba(200, 241, 53, 0.08) 35%,
+      transparent 75%);
 
   filter: blur(40px);
   z-index: 0;
@@ -423,11 +421,9 @@
   align-items: center;
   justify-content: center;
 
-    /* 3D curved/rotated effect */
+  /* 3D curved/rotated effect */
   transform:
-    perspective(1200px)
-    rotateY(-16deg)
-    rotateX(2deg);
+    perspective(1200px) rotateY(-16deg) rotateX(2deg);
 
   transform-style: preserve-3d;
 }

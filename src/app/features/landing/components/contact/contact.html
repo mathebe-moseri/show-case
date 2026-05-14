@@ -1,8 +1,5 @@
 <!-- Add this inside <head> -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
 <section class="contact-section" id="contact">
 
@@ -18,41 +15,24 @@
     <div class="social-icons contact-fade-3">
 
       <!-- Gmail -->
-      <a
-        href="mailto:mathebemoseri@gmail.com"
-        class="icon gmail"
-        data-label="mathebemoseri@gmail.com"
-      >
+      <a href="mailto:mathebemoseri@gmail.com" class="icon gmail" data-label="mathebemoseri@gmail.com">
         <i class="fa-solid fa-envelope"></i>
       </a>
 
       <!-- WhatsApp -->
-      <a
-        href="https://wa.me/27765956598"
-        target="_blank"
-        class="icon whatsapp"
-        data-label="+27 76 595 6598"
-      >
+      <a href="https://wa.me/27765956598" target="_blank" class="icon whatsapp" data-label="+27 76 595 6598">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
 
       <!-- LinkedIn -->
-      <a
-        href="https://www.linkedin.com/in/mathebemoseri/"
-        target="_blank"
-        class="icon linkedin"
-        data-label="linkedin.com/in/mathebemoseri"
-      >
+      <a href="https://www.linkedin.com/in/mathebemoseri/" target="_blank" class="icon linkedin"
+        data-label="linkedin.com/in/mathebemoseri">
         <i class="fa-brands fa-linkedin"></i>
       </a>
 
       <!-- GitHub -->
-      <a
-        href="https://github.com/mathebe-moseri"
-        target="_blank"
-        class="icon github"
-        data-label="github.com/mathebe-moseri"
-      >
+      <a href="https://github.com/mathebe-moseri" target="_blank" class="icon github"
+        data-label="github.com/mathebe-moseri">
         <i class="fa-brands fa-github"></i>
       </a>
 
@@ -66,26 +46,17 @@
       <div class="corner corner-br"></div>
 
       <!-- Success Message -->
-      <div
-        class="status-box status-success"
-        *ngIf="status === 'success'"
-      >
+      <div class="status-box status-success" *ngIf="status === 'success'">
         Message sent. I'll get back to you shortly.
       </div>
 
       <!-- Error Message -->
-      <div
-        class="status-box status-error"
-        *ngIf="status === 'error'"
-      >
+      <div class="status-box status-error" *ngIf="status === 'error'">
         Something went wrong. Try emailing directly instead.
       </div>
 
       <!-- Contact Form -->
-      <form
-        (ngSubmit)="onSubmit()"
-        *ngIf="status !== 'success'"
-      >
+      <form (ngSubmit)="onSubmit()" *ngIf="status !== 'success'">
 
         <!-- Name + Email -->
         <div class="field-row">
@@ -94,28 +65,15 @@
           <div class="field">
             <label for="c-name">Name</label>
 
-            <input
-              id="c-name"
-              type="text"
-              placeholder="Your name"
-              [(ngModel)]="formData.name"
-              name="name"
-              required
-            />
+            <input id="c-name" type="text" placeholder="Your name" [(ngModel)]="formData.name" name="name" required />
           </div>
 
           <!-- Email -->
           <div class="field">
             <label for="c-email">Email</label>
 
-            <input
-              id="c-email"
-              type="email"
-              placeholder="you@example.com"
-              [(ngModel)]="formData.email"
-              name="email"
-              required
-            />
+            <input id="c-email" type="email" placeholder="you@example.com" [(ngModel)]="formData.email" name="email"
+              required />
           </div>
 
         </div>
@@ -125,13 +83,8 @@
 
           <label for="c-subject">Subject</label>
 
-          <input
-            id="c-subject"
-            type="text"
-            placeholder="Remote opportunity / Collaboration / Other"
-            [(ngModel)]="formData.subject"
-            name="subject"
-          />
+          <input id="c-subject" type="text" placeholder="Remote opportunity / Collaboration / Other"
+            [(ngModel)]="formData.subject" name="subject" />
 
         </div>
 
@@ -140,22 +93,13 @@
 
           <label for="c-message">Message</label>
 
-          <textarea
-            id="c-message"
-            placeholder="Describe what you're building or what you need..."
-            [(ngModel)]="formData.message"
-            name="message"
-            required
-          ></textarea>
+          <textarea id="c-message" placeholder="Describe what you're building or what you need..."
+            [(ngModel)]="formData.message" name="message" required></textarea>
 
         </div>
 
         <!-- Submit Button -->
-        <button
-          class="btn-submit"
-          type="submit"
-          [disabled]="isSubmitting"
-        >
+        <button class="btn-submit" type="submit" [disabled]="isSubmitting">
           Send message
         </button>
 
@@ -166,10 +110,7 @@
     <!-- ── Right: Profile Image ─────────────────── -->
     <div class="contact-image contact-fade-4">
 
-      <img
-        src="images/me.png"
-        alt="Contact Illustration"
-      />
+      <img src="images/me.png" alt="Contact Illustration" />
 
     </div>
 

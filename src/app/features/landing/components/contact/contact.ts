@@ -24,7 +24,7 @@ export class Contact {
 
   status: 'idle' | 'sending' | 'success' | 'error' = 'idle';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   onSubmit(): void {
     if (!this.formData.name || !this.formData.email || !this.formData.message) return;
