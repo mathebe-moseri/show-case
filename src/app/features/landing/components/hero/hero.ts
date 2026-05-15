@@ -31,10 +31,13 @@ export class Hero implements AfterViewInit, OnDestroy {
   private typewriterObserver!: IntersectionObserver;
 
   currentRole = '';
-  private roles = [
-    '3+ years delivering end-to-end solutions, from architecture to deployment, using Angular (standalone), .NET / Node.js APIs and SQL.',
-    'Focused on performance, clean architecture and secure maintainable systems.'
-  ];
+private roles = [
+  '3+ years delivering end-to-end cloud and software solutions, from architecture to deployment, using Angular (Standalone), .NET / Node.js APIs, SQL and Microsoft Azure.',
+
+  'Experienced with Azure App Services, Azure SQL, CI/CD pipelines, GitHub Actions, REST APIs and cloud-native deployments in production environments.',
+
+  'Focused on performance, clean architecture, secure maintainable systems, deployment automation and operational reliability.'
+];
 
   private roleIndex = 0;
   private charIndex = 0;
