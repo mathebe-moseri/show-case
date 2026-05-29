@@ -1,0 +1,263 @@
+.projects-section {
+  padding: 4rem;
+  background: #050505;
+  color: #fff;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.projects-header {
+  margin-bottom: 2rem;
+}
+
+.projects-label {
+  color: #c8ff3d;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+}
+
+.projects-header h2 {
+  margin-top: 1rem;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.projects-header h2 span {
+  color: #c8ff3d;
+}
+
+/* ------------------ */
+/* SLIDER             */
+/* ------------------ */
+
+.project-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.slider-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 255, 61, 0.25);
+  background: rgba(255, 255, 255, 0.03);
+  color: #c8ff3d;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  flex-shrink: 0;
+}
+
+.slider-btn:hover {
+  background: #c8ff3d;
+  color: #050505;
+  transform: scale(1.08);
+}
+
+/* ------------------ */
+/* CARD               */
+/* ------------------ */
+
+.project-card {
+  width: 100%;
+  max-width: 1000px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(200, 255, 61, 0.15);
+
+  padding: 2rem 2.5rem;
+
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: #c8ff3d;
+  box-shadow: 0 0 30px rgba(200, 255, 61, 0.08);
+}
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.company {
+  color: #c8ff3d;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.project-card h3 {
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.status {
+  border: 1px solid #c8ff3d;
+  color: #c8ff3d;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.description {
+  color: #9f9f9f;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 750px;
+  font-size: 1rem;
+}
+
+/* ------------------ */
+/* FEATURES           */
+/* ------------------ */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 1rem 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.feature p {
+  margin: 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #c8ff3d;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ------------------ */
+/* STACK              */
+/* ------------------ */
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.stack span {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.45rem 0.8rem;
+  font-size: 0.75rem;
+  color: #c8ff3d;
+}
+
+/* ------------------ */
+/* FOOTER             */
+/* ------------------ */
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.links a {
+  color: #c8ff3d;
+  text-decoration: none;
+}
+
+.links a:hover {
+  opacity: 0.7;
+}
+
+/* ------------------ */
+/* DOTS               */
+/* ------------------ */
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.dot-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transition: 0.3s ease;
+}
+
+.dot-indicator.active {
+  background: #c8ff3d;
+  transform: scale(1.2);
+}
+
+/* ------------------ */
+/* MOBILE             */
+/* ------------------ */
+
+@media (max-width: 768px) {
+
+  .projects-section {
+    padding: 4rem 1.25rem;
+  }
+
+  .projects-header h2 {
+    font-size: 2.3rem;
+  }
+
+  .project-slider {
+    gap: 0.8rem;
+  }
+
+  .slider-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .project-top {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .status {
+    width: fit-content;
+  }
+}
+
+.feature p {
+  margin: 0;
+  font-size: 0.95rem;
+}

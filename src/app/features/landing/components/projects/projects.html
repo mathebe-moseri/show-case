@@ -1,1 +1,100 @@
-<p>projects works!</p>
+<section class="projects-section" id="projects">
+
+  <div class="projects-header">
+    <h2>
+      Systems I am
+      <span>building.</span>
+    </h2>
+  </div>
+
+  <div class="project-slider">
+
+    <button class="slider-btn" (click)="previousProject()">
+      ←
+    </button>
+
+    <div class="project-card">
+
+      <div class="project-top">
+
+        <div>
+          <p class="company">
+            {{ projects[currentIndex].company }}
+          </p>
+
+          <h3>
+            {{ projects[currentIndex].title }}
+          </h3>
+        </div>
+
+        <span class="status">
+          {{ projects[currentIndex].status }}
+        </span>
+
+      </div>
+
+      <p class="description">
+        {{ projects[currentIndex].description }}
+      </p>
+
+      <div class="features">
+        @for (feature of projects[currentIndex].features; track feature) {
+          <div class="feature">
+            <span class="dot"></span>
+            <p>{{ feature }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="stack">
+        @for (tech of projects[currentIndex].stack; track tech) {
+          <span>{{ tech }}</span>
+        }
+      </div>
+
+      <div class="project-footer">
+
+        <p>{{ projects[currentIndex].year }}</p>
+
+        <div class="links">
+
+          @if(projects[currentIndex].github !== '#'){
+            <a
+              [href]="projects[currentIndex].github"
+              target="_blank">
+              Github
+            </a>
+          }
+
+          <a
+            [href]="projects[currentIndex].demo"
+            target="_blank">
+            Live
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="slider-btn" (click)="nextProject()">
+      →
+    </button>
+
+  </div>
+
+  <div class="slider-dots">
+
+    @for(project of projects; track project.title; let i = $index){
+
+      <span
+        class="dot-indicator"
+        [class.active]="i === currentIndex">
+      </span>
+
+    }
+
+  </div>
+
+</section>
