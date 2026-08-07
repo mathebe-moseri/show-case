@@ -39,7 +39,7 @@ export class Skills implements AfterViewInit, OnDestroy {
     private sanitizer: DomSanitizer,
     private cdr: ChangeDetectorRef,
     private el: ElementRef,
-  ) {}
+  ) { }
 
   sanitize(svg: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(svg);
@@ -82,6 +82,15 @@ export class Skills implements AfterViewInit, OnDestroy {
       svgLogo: `<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z" fill="#9B4F96"/><path d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4V36.1c0-.9-.1-1.9-.6-2.8l-106.6 62z" fill="#68217A"/><path d="M85.3 76.1C81.1 83.5 73.1 88.5 64 88.5c-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6zM97 66.2l.9-4.3h-4.2v-4.7h5.1L100 51h4.9l-1.2 6.2h3.8l1.2-6.2h4.8l-1.2 6.2h2.4v4.7h-3.3l-.9 4.3h4.2v4.7h-5.1l-1.2 6.2h-4.9l1.2-6.2H101l-1.2 6.2h-4.8l1.2-6.2h-2.4v-4.7H97zm4.8 0h3.8l.9-4.3h-3.8l-.9 4.3z" fill="#fff"/></svg>`,
     },
     {
+      name: 'Firebase',
+      category: 'BACKEND',
+      svgLogo: `<svg viewBox="0 0 256 351" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FFA000" d="M36.2 302.6L56.8 38.3c.7-8.7 8.4-15 17-14.3 3.8.3 7.3 2 9.9 4.8l136.1 152.8z"/>
+    <path fill="#F57F17" d="M219 96.5L183.4 26.3c-3.7-7.3-12.7-10.2-20-6.5-2.8 1.4-5.1 3.7-6.5 6.5L36.2 302.6z"/>
+    <path fill="#FFCA28" d="M36.2 302.6l74.4-146.8 44.4 83.5z"/>
+  </svg>`,
+    },
+    {
       name: 'SQL Server',
       category: 'DATABASE',
       svgLogo: `<svg viewBox="0 0 50 60" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="10" rx="20" ry="7" fill="#CC2927"/><path d="M5 10v10c0 3.9 9 7 20 7s20-3.1 20-7V10c0 3.9-9 7-20 7S5 13.9 5 10z" fill="#CC2927"/><path d="M5 20v10c0 3.9 9 7 20 7s20-3.1 20-7V20c0 3.9-9 7-20 7S5 23.9 5 20z" fill="#B71C1C"/><path d="M5 30v10c0 3.9 9 7 20 7s20-3.1 20-7V30c0 3.9-9 7-20 7S5 33.9 5 30z" fill="#9A1616"/></svg>`,
@@ -91,6 +100,16 @@ export class Skills implements AfterViewInit, OnDestroy {
       category: 'CLOUD',
       svgLogo: `<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="az1" x1="-.022" y1="73.619" x2="48.367" y2="-1.469" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#114a8b"/><stop offset="1" stop-color="#0669bc"/></linearGradient><linearGradient id="az2" x1="41.252" y1="42.162" x2="52.314" y2="38.577" gradientUnits="userSpaceOnUse"><stop offset="0" stop-opacity=".3"/><stop offset=".071" stop-opacity=".2"/><stop offset=".321" stop-opacity=".1"/><stop offset=".623" stop-opacity=".05"/><stop offset="1" stop-opacity="0"/></linearGradient><linearGradient id="az3" x1="31.677" y1="-2.597" x2="77.777" y2="72.031" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3ccbf4"/><stop offset="1" stop-color="#2892df"/></linearGradient></defs><path d="M33.338 6.544h26.038l-27.03 80.087a4.152 4.152 0 0 1-3.933 2.824H8.149a4.145 4.145 0 0 1-3.928-5.47L29.404 9.368a4.152 4.152 0 0 1 3.934-2.824z" fill="url(#az1)"/><path d="M66.616 63.206H38.207a1.911 1.911 0 0 0-1.304 3.31l18.426 17.195a4.171 4.171 0 0 0 2.85 1.124h16.24z" fill="#0078d4"/><path d="M33.338 6.544a4.12 4.12 0 0 0-3.943 2.879L4.252 83.917a4.14 4.14 0 0 0 3.908 5.538h20.787a4.443 4.443 0 0 0 3.41-2.9l5.014-14.777 17.91 16.705a4.237 4.237 0 0 0 2.666.972H74.1L66.195 63.2l-24.01.006L57.444 6.544z" fill="url(#az2)"/><path d="M67.597 9.368a4.145 4.145 0 0 0-3.928-2.824H33.648a4.146 4.146 0 0 1 3.928 2.824l25.184 74.617a4.146 4.146 0 0 1-3.928 5.47h30.021a4.146 4.146 0 0 0 3.927-5.47z" fill="url(#az3)"/></svg>`,
     },
+    {
+  name: 'Google Cloud',
+  category: 'CLOUD',
+  svgLogo: `<svg viewBox="0 0 256 221" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#EA4335" d="M58 166a55 55 0 1 1 44-88l-19 15a31 31 0 1 0-25 49z"/>
+    <path fill="#4285F4" d="M198 166H102v-24h96a28 28 0 1 0 0-56h-8V62h8a52 52 0 0 1 0 104z"/>
+    <path fill="#34A853" d="M102 166H58v-24h44z"/>
+    <path fill="#FBBC05" d="M102 86H58V62h44z"/>
+  </svg>`,
+},
     {
       name: 'GitHub Actions',
       category: 'CLOUD',
@@ -201,5 +220,5 @@ export class Skills implements AfterViewInit, OnDestroy {
     observer.observe(host);
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 }

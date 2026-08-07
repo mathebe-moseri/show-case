@@ -21,7 +21,7 @@ export class Projects {
         'JavaScript',
         'Firebase',
         'Firestore',
-        'Leaflet'
+        'Google Cloud'
       ],
       features: [
         'Real-time tracking',
