@@ -12,6 +12,31 @@ export class Projects {
   currentIndex = 0;
   projects = [
     {
+      title: 'Remote Extra Classes',
+      company: 'Personal Project',
+      description:
+        'Mobile-friendly learning platform providing extra classes for high school learners. Designed to make studying accessible and convenient on smartphones and tablets.',
+      stack: [
+        'Angular',
+        'TypeScript',
+        'C#',
+        '.NET',
+        'Azure',
+        'SQL'
+      ],
+      features: [
+        'Extra classes on demand',
+        'Curriculum-aligned content',
+        'Self-paced learning',
+        'Progress monitoring'
+      ],
+      status: 'In Development',
+      year: '2025',
+      github: 'https://github.com/mathebe-moseri/skillUp',
+      demo: 'https://green-sky-0218fea03.6.azurestaticapps.net/'
+    },
+
+    {
       title: 'Mageza - Smart Taxi Coordination',
       company: 'Personal Project',
       description:
@@ -58,30 +83,6 @@ export class Projects {
       year: '2025',
       github: 'https://github.com/mathebe-moseri/skillUp',
       demo: 'https://brave-ocean-0a32b7e03.1.azurestaticapps.net/'
-    },
-
-    {
-      title: 'Extra Classes',
-      company: 'Personal Project',
-      description:
-        'Mobile-friendly learning platform providing extra classes for high school learners. Designed to make studying accessible and convenient on smartphones and tablets.',
-      stack: [
-        'Angular',
-        'TypeScript',
-        '.NET',
-        'Azure',
-        'SQL'
-      ],
-      features: [
-        'Extra classes on demand',
-        'Curriculum-aligned content',
-        'Self-paced learning',
-        'Progress monitoring'
-      ],
-      status: 'In Development',
-      year: '2025',
-      github: 'https://github.com/mathebe-moseri/skillUp',
-      demo: 'https://green-sky-0218fea03.6.azurestaticapps.net/'
     }
   ];
 
